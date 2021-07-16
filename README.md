@@ -12,6 +12,7 @@
       - bad configurations
       - The time this documentation was written
       - The platforms
+   e) I'm doing this on the same system where my Jenkins Master sits.
 
 2. Pre-requisites:
 
@@ -59,7 +60,7 @@
    ```
    - Documentation: https://github.com/jenkinsci/docker/blob/master/README.md
 
-6. We now need a fully fledge container from the alpine/socat (https://hub.docker.com/r/alpine/socat/) to expose the Docker Engine API and take the first example and read the **WARNING**
+6. We now need a container from the alpine/socat image (https://hub.docker.com/r/alpine/socat/) to expose the Docker Engine API. Take the first example and read the **WARNING**
 ```sh
    # docker pull alpine/socat
    # docker run -d --restart=always \
@@ -68,5 +69,35 @@
     alpine/socat \
     tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
 ```
-   
-   
+7. Open your Jenkins GUI through your http://localhost:8080 if Jenkins is open on the port 8080 and install the necessary plugings and also change your Admin Password.
+
+8. On your Master Jenkins dashboard go to:
+*Manage Jenkins > Manage Plugins > Available* search for **Docker** plugin and install it and restart jenkins.
+
+9. You will now be able to connect your Jenkins master with any Docker running jenkins slave as you can see there's an Uncategorized session that just appears in Manage Jenkins right at the bottom of the list with the Dockerr logo. *Oufff! Almost there*.
+
+10. Now go to:
+  *Manage Nodes and Clouds > Configure Clouds > Add a new cloud > Docker*
+  
+  - Click on **Docker Cloud details** and here's where we need to provide the Docker Engine API address: 
+  ```sh 
+     tcp://your_Linux_ip_address:2375
+     Click on *Test Connection* at the bottom right and you should see something like this: Version = 20.10.7, API Version = 1.41
+  ```
+  - Check the *Enabled* box
+
+11. Click on **Docker Agent templates > Add Docker Template**
+    - Labels: docker-jnlp --> choose any name then check the Enabled box
+    - Name: same as Labels for me
+    - Docker Image: jenkins/jnlp-slave as I'm going to use the *Attach Docker container* as my *connect method*
+    - Remote File System Root: /home/jenkins as returned by the command
+    ```sh
+    docker inspect jenkins/jnlp-slave | grep -I WorkingDir
+    ```
+    - Leave the rest by default, apply and save
+
+12. Return to create a new Build project from the main Jenkins Dashboard
+    - Click on *New Item*
+    - Check *Restrict where this project can be run*
+    - Provide your Label Expression you configure: docker-jnlp (mine was this one)
+    - Click on Execute a shell command, save annd run the build
