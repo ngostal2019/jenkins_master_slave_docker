@@ -8,11 +8,13 @@
 
    c) Don't forget to talk to your manager or your team members before implementing such project so they can fully understand the pros and cons.
 
-   d) This may fail depending on various factors:
+   d) I'm doing this on the same system where my Jenkins Master sits.
+   
+   e) This may fail depending on various factors:
       - bad configurations
       - The time this documentation was written
-      - The platforms
-   e) I'm doing this on the same system where my Jenkins Master sits.
+      - The platforms.
+   
 
 2. Pre-requisites:
 
