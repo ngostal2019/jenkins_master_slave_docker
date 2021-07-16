@@ -39,8 +39,34 @@
      Experimental:      true
      Server: 
    ```
+2. Now configure Docker Engine to enable the API version 1.41 (My case) by following this link: https://gist.github.com/styblope/dc55e0ad2a9848f2cc3307d4819d819f
 
+3. Once you're done type the following command:
+```sh
+   # curl http:your_ip_address:2375/version
 
+   {"Platform":{"Name":"Docker Engine - Community"},"Components":[{"Name":"Engine","Version":"20.10.7","Details":{"ApiVersion":"1.41","Arch":"amd64","BuildTime":"2021-06-02T11:54:50.000000000+00:00","Experimental":"false","GitCommit":"b0f5bc3","GoVersion":"go1.13.15","KernelVersion":"5.8.0-59-generic","MinAPIVersion":"1.12","Os":"linux"}},{"Name":"containerd","Version":"1.4.6","Details":{"GitCommit":"d71fcd7d8303cbf684402823e425e9dd2e99285d"}},{"Name":"runc","Version":"1.0.0-rc95","Details":{"GitCommit":"b9ee9c6314599f1b4a7f497e1f1f856fe433d3b7"}},{"Name":"docker-init","Version":"0.19.0","Details":{"GitCommit":"de40ad0"}}],"Version":"20.10.7","ApiVersion":"1.41","MinAPIVersion":"1.12","GitCommit":"b0f5bc3","GoVersion":"go1.13.15","Os":"linux","Arch":"amd64","KernelVersion":"5.8.0-59-generic","BuildTime":"2021-06-02T11:54:50.000000000+00:00"}
+```
+4. If you've got the output above, it means you are ready to set up your master/slave architecture. But we still have couple of more settings to do.
 
+5. Pull and run the latest images of jenkins (jenkins/jenkins:lts-jdk11) form: 
+   - Dockehub: https://hub.docker.com/r/jenkins/jenkins (pull the one with lts-jdk11)
+   ```sh
+      # docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11
+   
+      * Running it with a volume will allow you to retrieve your work after a disaster.
+      * Running it without the detach more allow you to see the jenkins master initialAdminPassword and its flow.
+   ```
+   - Documentation: https://github.com/jenkinsci/docker/blob/master/README.md
 
-
+6. We now need a fully fledge container from the alpine/socat (https://hub.docker.com/r/alpine/socat/) to expose the Docker Engine API and take the first example and read the **WARNING**
+```sh
+   # docker pull alpine/socat
+   # docker run -d --restart=always \
+    -p 127.0.0.1:2376:2375 \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    alpine/socat \
+    tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
+```
+   
+   
