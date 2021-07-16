@@ -28,18 +28,16 @@
    ```sh
    # docker version
 
-output:
- Client: Docker Engine - Community
- Version:           20.10.7
- API version:       1.41
- Go version:        go1.13.15
- Git commit:        f0df350
- Built:             Wed Jun  2 11:56:38 2021
- OS/Arch:           linux/amd64
- Context:           default
- Experimental:      true
-
-etc ...
+     Client: Docker Engine - Community
+     Version:           20.10.7
+     API version:       1.41
+     Go version:        go1.13.15
+     Git commit:        f0df350
+     Built:             Wed Jun  2 11:56:38 2021
+     OS/Arch:           linux/amd64
+     Context:           default
+     Experimental:      true
+     etc ...
    ```
 
 
