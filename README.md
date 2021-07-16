@@ -15,12 +15,20 @@
 
 2. Pre-requisites:
 
-   - A Linux machine on-premise (my case) or over the cloud (I didn't try this one yet)
-   - The latest version of Docker for you Linux platform
-   - Docker images pulled from https://hub.docker.com
-     - jenkins/jenkins
-     - alpine/socat
-     - jenkins/jnlp-slave (Not required but will be used)
+ - A Linux machine on-premise ( Ubuntu 20.04 LTS my case) or over the cloud (I didn't try this one yet)
+ - The latest version of Docker for you Linux platform
+ - Docker images pulled from https://hub.docker.com
+   - jenkins/jenkins
+   - alpine/socat
+   - jenkins/jnlp-slave (Not required but will be used)
+
+## CONFIGURATIONS
+
+1. Install Docker Engine and make sure it was successfully installed: https://docs.docker.com/engine/install/
+   ```sh
+   docker version
+   ```
+
 
 
 
