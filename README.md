@@ -26,7 +26,7 @@
 
 1. Install Docker Engine and make sure it was successfully installed: https://docs.docker.com/engine/install/
    ```sh
-   docker version
+   # docker version
    ```
 
 
