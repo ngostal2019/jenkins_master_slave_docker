@@ -58,7 +58,7 @@
       # docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11
    
       * Running it with a volume will allow you to retrieve your work after a disaster.
-      * Running it without the detach more allow you to see the jenkins master initialAdminPassword and its flow.
+      * Running it without the detach mode allows you to see the jenkins master initialAdminPassword and its flow.
    ```
    - Documentation: https://github.com/jenkinsci/docker/blob/master/README.md
 
