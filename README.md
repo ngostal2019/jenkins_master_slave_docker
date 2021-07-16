@@ -1,6 +1,6 @@
 # JENKINS MASTER/SLAVE ON DOCKER FOR DevOps PROJECT
 
-1. DISCLAMER:
+1. DISCLAIMER:
 
    a) This project is solely conducted by myself as I didn't test the     security side of it. So, I won't be held accountable for any issues you might enconter even though I will walk you through the process of setting up an architecture based on Jenkins Master/Slave over Docker.
    
