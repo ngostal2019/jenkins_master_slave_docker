@@ -43,7 +43,7 @@
 
 3. Once you're done type the following command:
 ```sh
-   # curl http:your_ip_address:2375/version
+   # curl http://your_ip_address:2375/version
 
    {"Platform":{"Name":"Docker Engine - Community"},"Components":[{"Name":"Engine","Version":"20.10.7","Details":{"ApiVersion":"1.41","Arch":"amd64","BuildTime":"2021-06-02T11:54:50.000000000+00:00","Experimental":"false","GitCommit":"b0f5bc3","GoVersion":"go1.13.15","KernelVersion":"5.8.0-59-generic","MinAPIVersion":"1.12","Os":"linux"}},{"Name":"containerd","Version":"1.4.6","Details":{"GitCommit":"d71fcd7d8303cbf684402823e425e9dd2e99285d"}},{"Name":"runc","Version":"1.0.0-rc95","Details":{"GitCommit":"b9ee9c6314599f1b4a7f497e1f1f856fe433d3b7"}},{"Name":"docker-init","Version":"0.19.0","Details":{"GitCommit":"de40ad0"}}],"Version":"20.10.7","ApiVersion":"1.41","MinAPIVersion":"1.12","GitCommit":"b0f5bc3","GoVersion":"go1.13.15","Os":"linux","Arch":"amd64","KernelVersion":"5.8.0-59-generic","BuildTime":"2021-06-02T11:54:50.000000000+00:00"}
 ```
