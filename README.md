@@ -74,7 +74,7 @@
 8. On your Master Jenkins dashboard go to:
 *Manage Jenkins > Manage Plugins > Available* search for **Docker** plugin and install it and restart jenkins.
 
-9. You will now be able to connect your Jenkins master with any Docker running jenkins slave as you can see there's an Uncategorized session that just appears in Manage Jenkins right at the bottom of the list with the Dockerr logo. *Oufff! Almost there*.
+9. You will now be able to connect your Jenkins master with any Docker running jenkins slave as you can see there's an Uncategorized session that just appears in Manage Jenkins right at the bottom of the list with the Docker logo. *Oufff! Almost there*.
 
 10. Now go to:
   *Manage Nodes and Clouds > Configure Clouds > Add a new cloud > Docker*
